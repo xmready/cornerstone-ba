@@ -2,12 +2,16 @@
 // ACTION BAR (CSS)
 // =============================================================================
 
+.actionBar {
+    margin: 1.4rem 0 0;
+}
 
 .actionBar-section {
     .form-field {
         background-color: $input-bg-color;
         border: $actionBar-form-field-border;
         border-radius: $actionBar-form-field-radius;
+        float: left;
 
         &:hover {
             border-color: stencilColor("input-border-color-active");
@@ -16,6 +20,7 @@
 
     .form-label {
         color: $actionBar-form-label-color;
+        font-family: $button-font-family;
         font-size: $actionBar-form-label-fontSize;
         line-height: $actionBar-form-label-lineHeight;
         margin-bottom: 0;

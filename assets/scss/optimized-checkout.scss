@@ -32,9 +32,24 @@
     // TODO:
     // Configure media query to be 'desktop' breakpoint size
     // -----------------------------------------------------------------------------
-    @media (min-width: 801px) {
+    @media (min-width: 1350px) {
         text-align: stencilString("optimizedCheckout-logo-position");
     }
+}
+
+.checkoutHeader {
+    align-items: center;
+    display: flex;
+    justify-content: start;
+}
+
+.checkoutHeader-content {
+    padding: 0;
+}
+
+.checkoutHeader-logo {
+    max-height: 78px;
+    max-width: 200px;
 }
 
 //
@@ -46,8 +61,10 @@
 
 .optimizedCheckout-headingPrimary {
     color: stencilColor("optimizedCheckout-headingPrimary-color");
-    font-family: stencilFontFamily("optimizedCheckout-headingPrimary-font"), Arial, Helvetica, sans-serif;
-    font-weight: stencilFontWeight("optimizedCheckout-headingPrimary-font");
+    font-family: "roboto";
+    font-style: normal;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
 .optimizedCheckout-headingSecondary {

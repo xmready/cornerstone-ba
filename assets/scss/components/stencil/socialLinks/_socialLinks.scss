@@ -9,7 +9,17 @@
 .socialLinks {
     @include clearfix;
     @include u-listReset; // 2
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
     line-height: lineHeight("largest");
+    @include breakpoint("medium") {
+        display: block;
+    }
+    @include breakpoint("small") {
+        display: block;
+    }
 
     .icon { // 1
         @include square($socialLinks-iconSize);

@@ -9,6 +9,7 @@
 
 
 .body {
+    flex: 1 1 auto;
     margin-bottom: spacing("double") * 2;
     margin-top: spacing("single"); // 1
 
@@ -62,6 +63,7 @@
 
         + .page-content {
             @include grid-column(9);
+            padding-left: 0;
         }
     }
 }

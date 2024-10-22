@@ -83,7 +83,6 @@
                     {{lang 'common.login'}}
                 </a>
                 {{#if settings.account_creation_enabled}}
-                    <span class="navUser-or">{{lang 'common.or'}}</span>
                     <a class="navUser-action"
                        href="{{urls.auth.create_account}}"
                        aria-label="{{lang 'common.sign_up'}}"
@@ -94,15 +93,15 @@
             {{/if}}
         </li>
         <li class="navUser-item navUser-item--cart">
-            <a class="navUser-action"
+            <a class="navUser-action navUser-action--cart"
                data-cart-preview
                data-dropdown="cart-preview-dropdown"
                data-options="align:right"
                href="{{urls.cart}}"
                aria-label="{{lang 'cart.nav_aria_label'}}"
             >
-                <span class="navUser-item-cartLabel">{{lang 'common.cart'}}</span>
-                <span class="countPill cart-quantity"></span>
+                <div class="navUser-item-cartLabel">{{lang 'common.cart'}}</div>
+                <div class="countPill cart-quantity"></div>
             </a>
 
             <div class="dropdown-menu" id="cart-preview-dropdown" data-dropdown-content aria-hidden="true"></div>
