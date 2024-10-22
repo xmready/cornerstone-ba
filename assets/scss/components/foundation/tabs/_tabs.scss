@@ -42,6 +42,7 @@
     }
 
     @include breakpoint("medium") {
+        font-size: fontSize("small");
         padding: spacing("half") spacing("single");
     }
 
@@ -58,6 +59,10 @@
     // are incorrect as the elements inside the tab-content have no dimensions to grab.
     // Carousel is a prime example. It needs widths to calculate the layout and slides
     // -----------------------------------------------------------------------------
+    @include breakpoint("medium") {
+        font-size: fontSize("small");
+    }
+
     &.has-jsContent {
         display: block;
         height: 0;

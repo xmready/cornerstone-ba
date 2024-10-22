@@ -19,7 +19,7 @@
 
 .skip-to-main-link {
     background: $header-bg;
-    color: $color-textBase;
+    color: stencilColor("color-white");
     font-weight: 700;
     left: 50%;
     padding: 4px;
@@ -29,6 +29,7 @@
     z-index: zIndex("highest");
 
     &:focus {
+        color: stencilColor("color-white");
         transform: translate(-50%, 0%);
     }
 }
@@ -36,18 +37,27 @@
 .header {
     background-color: $header-bg;
     border-bottom: container("border");
+    font-family: "druk_wide";
+    font-size: 0.7rem;
+    font-style: normal;
+    font-weight: bold;
     height: $header-height;
+    letter-spacing: 0.08em;
     position: fixed;
+    text-transform: uppercase;
+    text-underline-offset: 0.2em;
     top: 0;
     width: 100%;
     z-index: zIndex("higher");
 
     @include breakpoint("medium") {
+        align-items: end;
         border-bottom: container("border");
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         height: auto;
         overflow: visible;
+        padding: 1rem 0;
         position: relative;
     }
 
@@ -73,7 +83,8 @@
 
     @include breakpoint("medium") {
         height: auto;
-        margin: (spacing("double") + spacing("base")) auto (spacing("double") + spacing("single"));
+        margin: 0 1.5% 0 auto;
+        order: 1;
         padding: 0;
 
         .header.fixed & {
@@ -189,7 +200,7 @@
 .header-logo-image {
     display: block;
     margin: 0 auto;
-    max-height: remCalc($header-height) - $header-logo-marginVertical * 2;
+    max-height: remCalc($header-height) - $header-logo-marginVertical;
 
     @include breakpoint("medium") {
         max-height: none;
@@ -227,7 +238,7 @@
     .mobileMenu-toggleIcon,
     .mobileMenu-toggleIcon::before,
     .mobileMenu-toggleIcon::after {
-        background: $header-font-color;
+        background: $color-white;
         content: "";
         display: block;
         height: 2px;
@@ -256,7 +267,7 @@
 
         &::before,
         &::after {
-            background-color: $header-font-color;
+            background-color: $color-white;
             bottom: auto;
             top: auto;
             transition: transform 100ms ease-in 150ms, top 100ms ease-in, bottom 100ms ease-in; // Animate lines from hamburger to 'x'

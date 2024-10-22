@@ -78,6 +78,9 @@
 .card-title {
     font-size: $card-title-fontSize;
     margin: $card-title-margin;
+    @include breakpoint("small") {
+        font-size: fontSize("base");
+    }
 
     > a {
         color: $card-title-color;

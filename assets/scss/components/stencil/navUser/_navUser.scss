@@ -25,12 +25,18 @@
     z-index: zIndex("lowest"); // 5.
 
     @include breakpoint("medium") {
-        padding: 0 spacing("single");
-        position: relative;
-        right: auto;
-        top: auto;
+        margin: 0 auto;
+        order: 3;
+        padding: 0 0 0.2rem;
+        position: static;
         transform: none;
+        width: auto;
         z-index: zIndex("high");
+    }
+
+    &::before,
+    &::after {
+        display: none;
     }
 
     .dropdown-menu {
@@ -38,45 +44,29 @@
         border: 1px solid stencilColor("navUser-dropdown-borderColor");
         box-shadow: container("dropShadow");
         position: absolute;
-
-        &.is-open {
-            &::before {
-                @include css-triangle(
-                    $triangle-direction: "bottom",
-                    $triangle-size: 10px,
-                    $triangle-color: stencilColor("navUser-dropdown-borderColor")
-                );
-                bottom: 100%;
-                left: spacing("half");
-                position: absolute;
-            }
-
-            &::after {
-                @include css-triangle(
-                    $triangle-direction: "bottom",
-                    $triangle-size: 8px,
-                    $triangle-color: stencilColor("navUser-dropdown-backgroundColor")
-                );
-                bottom: 100%;
-                left: spacing("half") + remCalc(2px);
-                position: absolute;
-            }
-        }
     }
 }
 
 .navUser-section {
-    @include breakpoint("medium") {
-        position: relative; // 7
+    &::before,
+    &::after {
+        display: none;
     }
 }
 
 .navUser-action {
     color: stencilColor("navUser-color");
-    font-weight: fontWeight("bold");
-    padding: spacing("base") spacing("half");
-    text-decoration: none;
+    letter-spacing: 0.08em;
+    padding: spacing("base") spacing("third");
+    text-decoration: underline;
     text-transform: uppercase;
+    text-underline-offset: 0.2em;
+
+    @include breakpoint("medium") {
+        &:hover {
+            text-underline-offset: 2em;
+        }
+    }
 
     &:hover,
     &.is-open {
@@ -86,6 +76,14 @@
             fill: stencilColor("navUser-color-hover");
             stroke: stencilColor("navUser-color-hover");
         }
+    }
+
+    &:active {
+        text-decoration: none;
+    }
+
+    &:focus {
+        color: stencilColor("color-white");
     }
 
     .icon {
@@ -98,6 +96,15 @@
         stroke: stencilColor("navUser-color");
         transition: all 0.15s ease;
     }
+}
+
+.navUser-action--cart {
+    @include breakpoint("small");
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    text-decoration: none;
 }
 
 .navUser-action--currencySelector + .dropdown-menu,
@@ -114,6 +121,7 @@
 }
 
 .navUser-action--storeCredit + .dropdown-menu {
+    font-family: $body-font-family;
     max-width: remCalc(300px);
     padding: spacing("single");
 
@@ -128,8 +136,8 @@
 
 .navUser-action-divider {
     border-right: container("border");
-    color: stencilColor("color-textSecondary");
     display: inline-block;
+    font-size: 0.7rem;
     padding: 0 remCalc(20) 0 0;
     text-decoration: none;
 }
@@ -166,41 +174,24 @@
     .navUser-action {
         color: stencilColor("navUser-color");
 
-        &:hover,
+        &.hover {
+            color: stencilColor("navUser-color-hover");
+        }
+
         &.is-open {
             color: stencilColor("navUser-color-hover");
+            text-decoration: none;
         }
     }
 
     .dropdown-menu {
+        font-family: $body-font-family;
         max-width: remCalc(320px);
 
         &.is-open {
             left: auto !important; // 7
             right: remCalc(5px); // 7
             top: auto !important; // 7
-            @include breakpoint("medium") {
-                right: 0; // 7
-            }
-
-            &::before,
-            &::after {
-                left: auto;
-            }
-
-            &::before {
-                right: spacing("half") - remCalc(5px); // 8
-                @include breakpoint("medium") {
-                    right: spacing("half"); // 8
-                }
-            }
-
-            &::after {
-                right: spacing("half") - remCalc(3px); // 8
-                @include breakpoint("medium") {
-                    right: spacing("half") + remCalc(2px); // 8
-                }
-            }
         }
     }
 }
@@ -209,7 +200,17 @@
     display: none;
 
     @include breakpoint("small") {
-        display: inline;
+        display: block;
+        text-decoration: underline;
+
+        &:hover {
+            text-underline-offset: 1em;
+        }
+    }
+    @include breakpoint("medium") {
+        &:hover {
+            text-underline-offset: 2em;
+        }
     }
 }
 
@@ -222,6 +223,13 @@
 }
 
 .navUser-item--account {
+    @include breakpoint("medium") {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
     .navUser-or {
         + .navUser-action {
             margin-right: -0.5rem; // 1
@@ -229,7 +237,7 @@
     }
 
     .navUser-action {
-        display: inline-block;
+        // display: inline-block;
     }
 }
 
@@ -318,21 +326,20 @@
 // -----------------------------------------------------------------------------
 
 .countPill {
-    background-color: stencilColor("navUser-indicator-backgroundColor");
+    background-color: transparent;
+    background-size: cover;
     border-radius: 50%;
-    color: color("whites", "bright");
-    display: none;
-    font-size: fontSize("tiny");
-    font-weight: fontWeight("bold");
-    height: 20px; // 1
-    line-height: 20px; // 1
-    margin-left: spacing("eighth");
+    color: transparent;
+    font-family: $body-font-family;
+    margin-left: spacing("third");
     text-align: center;
-    width: 20px; // 1
+    width: 30px; // 1
 }
 
 .countPill--positive {
-    display: inline-block;
+    background-color: stencilColor("navUser-indicator-backgroundColor");
+    color: color("whites", "bright");
+    display: block;
 }
 
 .countPill--alt {

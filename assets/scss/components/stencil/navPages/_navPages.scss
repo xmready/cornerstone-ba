@@ -49,8 +49,10 @@
         background: transparent;
         display: block;
         height: auto;
-        padding: 0;
-        position: relative;
+        margin: 0 auto 0 0;
+        order: 2;
+        padding: 0 0 0.2rem;
+        position: static;
     }
 
     &.is-open {
@@ -64,16 +66,13 @@
 // -----------------------------------------------------------------------------
 
 .navPages {
-    background-color: $navPages-backgroundColor;
+    background-color: $color-black;
     height: 100%;
     overflow-y: auto;
     padding: spacing("single");
 
     @include breakpoint("medium") {
-        @include grid-row(); // 1
-        @include nav($style: "navBar", $wrapper: "nav");
         background: none;
-        font-size: 0; // 1
         overflow-y: visible;
         padding: 0;
         text-align: center;
@@ -81,6 +80,11 @@
 
     ul {
         list-style: none;
+    }
+
+    &::before,
+    &::after {
+        display: none;
     }
 
     .navPage-subMenu-list {
@@ -104,8 +108,10 @@
     margin: 0;
 
     @include breakpoint("medium") {
-        display: inline-block;
-        float: none;
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
     }
 
     + .navPages-list {
@@ -113,6 +119,10 @@
         margin-top: spacing("half");
         padding-top: spacing("half");
     }
+}
+
+.navPages-item {
+    color: $color-white;
 }
 
 .navPages-list-depth-max.subMenu-is-open {
@@ -185,18 +195,20 @@
 .navPages-action {
     color: stencilColor("navPages-color");
     display: block;
-    font-size: fontSize("smaller");
-    font-weight: fontWeight("bold");
     padding: spacing("half") 0;
-    text-decoration: none;
-    text-transform: uppercase;
 
     @include breakpoint("medium") {
         display: inline-block;
-        padding: spacing("half") (spacing("half") + spacing("quarter")) (spacing("half") + spacing("quarter"));
+        padding: spacing("base") spacing("half");
 
         &.is-open {
             background-color: $navPage-subMenu-item--is-highlighted-background;
+            text-decoration: none;
+        }
+
+        &:hover,
+        &:active {
+            text-underline-offset: 2em;
         }
     }
 
@@ -217,6 +229,7 @@
     }
 
     &:hover,
+    &:focus,
     &.activePage {
         color: $navPage-subMenu-item--is-highlighted-color;
 
@@ -224,6 +237,10 @@
             fill: $navPage-subMenu-item--is-highlighted-color;
             stroke: $navPage-subMenu-item--is-highlighted-color;
         }
+    }
+
+    &:active {
+        text-decoration: none;
     }
 
     svg {
@@ -408,7 +425,11 @@
     padding: spacing("half") 0;
 
     @include breakpoint("medium") {
-        padding: spacing("half") 0 (spacing("half") + spacing("quarter"));
+        padding: (spacing("half") + spacing("quarter")) 0;
+
+        &:hover {
+            text-decoration: none;
+        }
     }
 
     .navPages-list:not(.navPages-list-depth-max) & {

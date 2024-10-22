@@ -20,6 +20,9 @@ ol.breadcrumbs {
     @include breakpoint("small") {
         display: block; // 1
     }
+    @include breakpoint("medium") {
+        text-align: left;
+    }
 }
 
 .breadcrumb {

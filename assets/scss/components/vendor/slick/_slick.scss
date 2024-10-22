@@ -18,13 +18,19 @@
 
 .slick-next,
 .slick-prev {
-    @include carouselOpaqueBackgrounds($slick-arrow-bgColor);
+    background-color: transparent;
     border: 1px solid $slick-arrow-borderColor;
     height: remCalc(61px);
     margin-top: -(remCalc(15px));
     padding: remCalc(10px);
     width: remCalc(40px);
     z-index: 1;
+
+    @media(hover: hover) and (pointer: fine) {
+        &:hover {
+            @include carouselOpaqueBackgrounds($slick-arrow-bgColor); // 1
+        }
+    }
 
     &::before {
         background-position: 50%;
@@ -35,9 +41,12 @@
         width: remCalc(20px);
     }
 
+    &:active {
+        @include carouselOpaqueBackgrounds($slick-arrow-bgColor); // 1
+    }
+
     &:hover,
     &:focus {
-        @include carouselOpaqueBackgrounds($slick-arrow-bgColor); // 1
         background-position: 50%;
         background-repeat: no-repeat;
         background-size: 100%;

@@ -615,6 +615,7 @@ $card-preview-zoom-bottom-offset:       6rem;
 
 .previewCartItem-brand,
 .previewCartItem-name {
+    font-size: fontSize("smaller");
     margin-bottom: spacing("eighth");
 }
 
@@ -622,7 +623,8 @@ $card-preview-zoom-bottom-offset:       6rem;
 .previewCartItem-price {
     color: $small-font-color;
     display: inline-block;
-    font-size: fontSize("smallest");
+    font-family: $body-font-family;
+    font-size: fontSize("smaller");
 }
 
 .previewCartAction {

@@ -25,9 +25,51 @@
             window.lazySizesConfig.loadMode = 1;
         </script>
         <script async src="{{cdn 'assets/dist/theme-bundle.head_async.js' resourceHint='preload' as='script'}}"></script>
-        
+
+        <style>
+            @font-face {
+                font-family: 'druk_wide';
+                src: url("{{cdn 'webdav:/fonts/druk-wide-medium-regular-webfont.woff2'}}") format('woff2'),
+                     url("{{cdn 'webdav:/fonts/druk-wide-medium-regular-webfont.woff'}}") format('woff'),
+                     url("{{cdn 'webdav:/fonts/druk-wide-medium-regular-webfont.ttf'}}") format('truetype');
+                font-weight: normal;
+                font-style: normal;
+
+            }
+
+            @font-face {
+                font-family: 'druk_wide';
+                src: url("{{cdn 'webdav:/fonts/druk-wide-bold-webfont.woff2'}}") format('woff2'),
+                     url("{{cdn 'webdav:/fonts/druk-wide-bold-webfont.woff'}}") format('woff'),
+                     url("{{cdn 'webdav:/fonts/druk-wide-bold-webfont.ttf'}}") format('truetype');
+                font-weight: bold;
+                font-style: normal;
+
+            }
+
+            @font-face {
+                font-family: 'druk_wide';
+                src: url("{{cdn 'webdav:/fonts/druk-wide-heavy-webfont.woff2'}}") format('woff2'),
+                     url("{{cdn 'webdav:/fonts/druk-wide-heavy-webfont.woff'}}") format('woff'),
+                     url("{{cdn 'webdav:/fonts/druk-wide-heavy-webfont.ttf'}}") format('truetype');
+                font-weight: bolder;
+                font-style: normal;
+
+            }
+
+            @font-face {
+                font-family: 'roboto';
+                src: url("{{cdn 'webdav:/fonts/roboto-bold-webfont.woff2'}}") format('woff2'),
+                     url("{{cdn 'webdav:/fonts/roboto-bold-webfont.woff'}}") format('woff'),
+                     url("{{cdn 'webdav:/fonts/roboto-bold-webfont.ttf'}}") format('truetype');
+                font-weight: bold;
+                font-style: normal;
+
+            }
+        </style>
+
         {{getFontsCollection font-display='block'}}
-        
+
         <script async src="{{cdn 'assets/dist/theme-bundle.font.js' resourceHint='preload' as='script'}}"></script>
 
         {{{stylesheet '/assets/css/theme.css'}}}
@@ -62,7 +104,7 @@
                 window.stencilBootstrap("{{page_type}}", {{jsContext}}).load();
 
                 function browserSupportsFormData() {
-                    return typeof FormData !== 'undefined' 
+                    return typeof FormData !== 'undefined'
                         && !!FormData.prototype.keys;
                 }
                 function loadFormDataPolyfillScript(src) {

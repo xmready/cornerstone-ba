@@ -18,6 +18,10 @@
     margin-bottom: spacing("single");
     text-align: center;
 
+    li > a {
+        font-size: fontSize("small");
+    }
+
     .pagination-item { // 2
         display: inline-block;
     }
