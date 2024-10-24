@@ -161,7 +161,7 @@
     "color-successLight": "#d5ffd8",
     "color-warning": "#f1a500",
     "color-warningLight": "#fffdea",
-    "color-black": "#ffffff",
+    "color-black": "#000000",
     "color-white": "#ffffff",
     "color-whitesBase": "#e5e5e5",
     "color-grey": "#999999",
