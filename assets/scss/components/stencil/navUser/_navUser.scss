@@ -25,11 +25,11 @@
     z-index: zIndex("lowest"); // 5.
 
     @include breakpoint("medium") {
-        padding: 0 spacing("single");
-        position: relative;
-        right: auto;
-        top: auto;
+        margin: 0 auto;
+        order: 3;
+        position: static;
         transform: none;
+        width: auto;
         z-index: zIndex("high");
     }
 
@@ -75,17 +75,23 @@
     color: stencilColor("navUser-color");
     font-weight: fontWeight("bold");
     padding: spacing("base") spacing("half");
-    text-decoration: none;
+    text-decoration: underline;
     text-transform: uppercase;
+    text-underline-offset: 0.2em;
 
     &:hover,
     &.is-open {
         color: stencilColor("navUser-color-hover");
+        text-underline-offset: 1em;
 
         svg {
             fill: stencilColor("navUser-color-hover");
             stroke: stencilColor("navUser-color-hover");
         }
+    }
+
+    &:active {
+        text-decoration: none;
     }
 
     .icon {

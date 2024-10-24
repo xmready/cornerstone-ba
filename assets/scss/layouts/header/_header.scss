@@ -43,9 +43,10 @@
     z-index: zIndex("higher");
 
     @include breakpoint("medium") {
+        align-items: center;
         border-bottom: container("border");
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         height: auto;
         overflow: visible;
         position: relative;
@@ -73,7 +74,8 @@
 
     @include breakpoint("medium") {
         height: auto;
-        margin: (spacing("double") + spacing("base")) auto (spacing("double") + spacing("single"));
+        margin: 0 0 0 auto;
+        order: 1;
         padding: 0;
 
         .header.fixed & {
@@ -227,7 +229,7 @@
     .mobileMenu-toggleIcon,
     .mobileMenu-toggleIcon::before,
     .mobileMenu-toggleIcon::after {
-        background: $header-font-color;
+        background: $color-white;
         content: "";
         display: block;
         height: 2px;
@@ -256,7 +258,7 @@
 
         &::before,
         &::after {
-            background-color: $header-font-color;
+            background-color: $color-white;
             bottom: auto;
             top: auto;
             transition: transform 100ms ease-in 150ms, top 100ms ease-in, bottom 100ms ease-in; // Animate lines from hamburger to 'x'

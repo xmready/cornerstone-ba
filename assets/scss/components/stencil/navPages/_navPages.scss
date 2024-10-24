@@ -49,8 +49,9 @@
         background: transparent;
         display: block;
         height: auto;
+        order: 2;
         padding: 0;
-        position: relative;
+        position: static;
     }
 
     &.is-open {
@@ -64,7 +65,7 @@
 // -----------------------------------------------------------------------------
 
 .navPages {
-    background-color: $navPages-backgroundColor;
+    background-color: #000;
     height: 100%;
     overflow-y: auto;
     padding: spacing("single");
@@ -113,6 +114,10 @@
         margin-top: spacing("half");
         padding-top: spacing("half");
     }
+}
+
+.navPages-item {
+    color: $color-white;
 }
 
 .navPages-list-depth-max.subMenu-is-open {
@@ -188,15 +193,22 @@
     font-size: fontSize("smaller");
     font-weight: fontWeight("bold");
     padding: spacing("half") 0;
-    text-decoration: none;
+    text-decoration: underline;
     text-transform: uppercase;
+    text-underline-offset: 0.2em;
 
     @include breakpoint("medium") {
         display: inline-block;
-        padding: spacing("half") (spacing("half") + spacing("quarter")) (spacing("half") + spacing("quarter"));
+        padding: 0 (spacing("half") + spacing("quarter"));
 
         &.is-open {
             background-color: $navPage-subMenu-item--is-highlighted-background;
+            text-decoration: none;
+        }
+
+        &:hover,
+        &:active {
+            text-underline-offset: 1em;
         }
     }
 
@@ -217,6 +229,7 @@
     }
 
     &:hover,
+    &:focus,
     &.activePage {
         color: $navPage-subMenu-item--is-highlighted-color;
 
@@ -224,6 +237,10 @@
             fill: $navPage-subMenu-item--is-highlighted-color;
             stroke: $navPage-subMenu-item--is-highlighted-color;
         }
+    }
+
+    &:active {
+        text-decoration: none;
     }
 
     svg {
@@ -408,7 +425,11 @@
     padding: spacing("half") 0;
 
     @include breakpoint("medium") {
-        padding: spacing("half") 0 (spacing("half") + spacing("quarter"));
+        padding: (spacing("half") + spacing("quarter")) 0;
+
+        &:hover {
+            text-decoration: none;
+        }
     }
 
     .navPages-list:not(.navPages-list-depth-max) & {
