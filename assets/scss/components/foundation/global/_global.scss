@@ -9,9 +9,14 @@
 
 @if $exportCSS--global { // 1
 
+    html {
+        height: auto;
+    }
+
     body {
         display: flex;
         flex-direction: column;
+        height: auto;
         min-height: 100vh;
         padding-top: $header-height; // 2
         @include breakpoint("medium") {
